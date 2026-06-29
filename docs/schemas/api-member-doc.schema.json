@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://typecobol.example/schemas/api-member-doc.schema.json",
+  "title": "TypeCobol API Member Documentation",
+  "type": "object",
+  "required": ["fqName", "kind", "signature", "semanticSummary", "sourceFile"],
+  "properties": {
+    "fqName": { "type": "string" },
+    "kind": {
+      "type": "string",
+      "enum": ["class", "interface", "enum", "constructor", "method", "property", "field", "event"]
+    },
+    "signature": { "type": "string" },
+    "declaredInFile": { "type": "string" },
+    "sourceFile": { "type": "string" },
+    "sourceLine": { "type": ["integer", "null"], "minimum": 1 },
+    "xmlDocComment": { "type": ["string", "null"] },
+    "semanticSummary": { "type": "string" },
+    "whenToUse": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "whenNotToUse": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "mutability": { "type": ["string", "null"] },
+    "sideEffects": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "failureModes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "examples": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "ragKeywords": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "relatedMembers": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}
+

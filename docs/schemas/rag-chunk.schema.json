@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://typecobol.example/schemas/rag-chunk.schema.json",
+  "title": "TypeCobol RAG Chunk",
+  "type": "object",
+  "required": ["chunk_type", "content"],
+  "properties": {
+    "chunk_type": {
+      "type": "string",
+      "enum": ["api_member", "recipe", "ast_node", "concept"]
+    },
+    "content": { "type": "string" },
+    "fq_name": { "type": ["string", "null"] },
+    "signature": { "type": ["string", "null"] },
+    "task": { "type": ["string", "null"] },
+    "source_file": { "type": ["string", "null"] },
+    "source_commit": { "type": ["string", "null"] },
+    "semantic_summary": { "type": ["string", "null"] },
+    "steps": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "pitfalls": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "keywords": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
+

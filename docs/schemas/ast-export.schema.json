@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://typecobol.example/schemas/ast-export.schema.json",
+  "title": "TypeCobol AST Export",
+  "type": "object",
+  "required": ["parserVersion", "source", "copyDirectories", "missingCopies", "diagnostics", "ast"],
+  "properties": {
+    "parserVersion": { "type": "string" },
+    "source": { "type": "string" },
+    "copyDirectories": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "missingCopies": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "ast": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/astNode" }
+      ]
+    }
+  },
+  "$defs": {
+    "astNode": {
+      "type": "object",
+      "required": ["clrType", "diagnostics", "sourceLines", "children"],
+      "properties": {
+        "clrType": { "type": ["string", "null"] },
+        "id": { "type": ["string", "null"] },
+        "uri": { "type": ["string", "null"] },
+        "name": { "type": ["string", "null"] },
+        "qualifiedName": { "type": ["string", "null"] },
+        "visualQualifiedName": { "type": ["string", "null"] },
+        "flags": { "type": ["string", "null"] },
+        "codeElementType": { "type": ["string", "null"] },
+        "codeElementText": { "type": ["string", "null"] },
+        "diagnostics": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "sourceLines": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "children": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/astNode" }
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}
+
